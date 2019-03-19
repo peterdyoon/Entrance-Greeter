@@ -65,7 +65,7 @@ first_time_wait = False
 while True:
 	for event in pygame.event.get():
 		# print event
-                continue
+		continue
 	for index, channel in enumerate(channels):
 		# print index, channel, channel.getState()
 		if channel.getState() == 1:
@@ -118,12 +118,14 @@ while True:
 				first_time_wait = False
 				first_time_neutral = True
 
-	# temp_time = datetime.datetime.now()
-	# if (temp_time - sleep_tracker_start_time).seconds > 50:
-	# 	sleep_tracker_start_time = datetime.datetime.now()
-	# 	show_image("pull_forward")
-	# 	first_time_neutral = True
-	# 	first_time_package = True
+	temp_time = datetime.datetime.now()
+	if (temp_time - sleep_tracker_start_time).seconds > 50:
+		sleep_tracker_start_time = datetime.datetime.now()
+		show_image("pull_forward")
+		first_time_neutral = True
+		first_time_package = False
+		first_time_thankyou = False
+		first_time_wait = False
 ### Prod Phidget
 
 
