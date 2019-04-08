@@ -35,6 +35,11 @@ def play_sound(stage):
 	sound = pygame.mixer.Sound("Sounds/{}.wav".format(stage))
 	sound.play()
 
+if sys.argv[1] == "Neutral":
+	while True:
+		for event in pygame.event.get():
+			show_image("neutral")
+
 # Comment out for now during Pygame Testing
 channels = [DigitalInput() for x in range(0, 8)]
 
