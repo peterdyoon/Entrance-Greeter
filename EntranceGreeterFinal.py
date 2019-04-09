@@ -111,6 +111,7 @@ while True:
 					if interval == wash_delay * accuracy_index - 1:
 						show_image("thank_you")
 						play_sound("thank_you")
+						sleep_tracker_start_time = datetime.datetime.now()
 						first_time_thankyou = False
 						# first_time_wait = True
 						# first_time_package == True
