@@ -125,7 +125,7 @@ while True:
 			# 	first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
-	if (temp_time - sleep_tracker_start_time).seconds > 5:
+	if (temp_time - sleep_tracker_start_time).seconds > 10:
 		sleep_tracker_start_time = datetime.datetime.now()
 		show_image("neutral")
 		first_time_neutral = False
