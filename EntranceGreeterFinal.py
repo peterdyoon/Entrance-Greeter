@@ -105,7 +105,7 @@ while True:
 				first_time_thankyou = True
 			elif first_time_thankyou == True:
 				print "Thank You Index: {}".format(index)
-				wash_delay = 8.0
+				wash_delay = 5.0
 				accuracy_index = 100
 				for interval in range(0, int(wash_delay) * accuracy_index):
 					if interval == wash_delay * accuracy_index - 1:
@@ -124,7 +124,7 @@ while True:
 				first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
-	if (temp_time - sleep_tracker_start_time).seconds > 50:
+	if (temp_time - sleep_tracker_start_time).seconds > 10:
 		sleep_tracker_start_time = datetime.datetime.now()
 		show_image("pull_forward")
 		first_time_neutral = True
