@@ -113,7 +113,7 @@ while True:
 						play_sound("thank_you")
 						first_time_thankyou = False
 						# first_time_wait = True
-						first_time_package == True
+						# first_time_package == True
 					else:
 						sleep(wash_delay/(wash_delay*accuracy_index))
 			# elif first_time_wait and index == 4:
@@ -125,7 +125,7 @@ while True:
 			# 	first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
-	if (temp_time - sleep_tracker_start_time).seconds > 10:
+	if (temp_time - sleep_tracker_start_time).seconds > 5:
 		sleep_tracker_start_time = datetime.datetime.now()
 		show_image("neutral")
 		first_time_neutral = False
