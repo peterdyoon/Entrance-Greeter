@@ -57,7 +57,7 @@ for index, channel in enumerate(channels):
 # Comment out for now during Pygame Testing
 
 # Start with Pull Forward
-show_image("please_wait")
+show_image("pull_forward")
 
 # Flag for when to play Thank You message
 sleep_tracker_start_time = datetime.datetime.now()
@@ -124,7 +124,7 @@ while True:
 				first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
-	if (temp_time - sleep_tracker_start_time).seconds > 15:
+	if (temp_time - sleep_tracker_start_time).seconds > 50:
 		sleep_tracker_start_time = datetime.datetime.now()
 		show_image("pull_forward")
 		first_time_neutral = True
