@@ -105,7 +105,7 @@ while True:
 				first_time_thankyou = True
 			elif first_time_thankyou == True:
 				print "Thank You Index: {}".format(index)
-				wash_delay = 5.0
+				wash_delay = 10.0
 				accuracy_index = 100
 				for interval in range(0, int(wash_delay) * accuracy_index):
 					if interval == wash_delay * accuracy_index - 1:
