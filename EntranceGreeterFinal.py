@@ -57,12 +57,12 @@ for index, channel in enumerate(channels):
 # Comment out for now during Pygame Testing
 
 # Start with Pull Forward
-show_image("pull_forward")
+show_image("neutral")
 
 # Flag for when to play Thank You message
 sleep_tracker_start_time = datetime.datetime.now()
-first_time_neutral = True
-first_time_package = False
+first_time_neutral = False
+first_time_package = True
 first_time_thankyou = False
 first_time_wait = False
 
@@ -112,23 +112,24 @@ while True:
 						show_image("thank_you")
 						play_sound("thank_you")
 						first_time_thankyou = False
-						first_time_wait = True
+						# first_time_wait = True
+						first_time_package == True
 					else:
 						sleep(wash_delay/(wash_delay*accuracy_index))
-			elif first_time_wait and index == 4:
-				print "Please Wait Index: {}".format(index)
-				show_image("please_wait")
-				play_sound("please_wait")
-				sleep_tracker_start_time = datetime.datetime.now()
-				first_time_wait = False
-				first_time_neutral = True
+			# elif first_time_wait and index == 4:
+			# 	print "Please Wait Index: {}".format(index)
+			# 	show_image("please_wait")
+			# 	play_sound("please_wait")
+			# 	sleep_tracker_start_time = datetime.datetime.now()
+			# 	first_time_wait = False
+			# 	first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
 	if (temp_time - sleep_tracker_start_time).seconds > 10:
 		sleep_tracker_start_time = datetime.datetime.now()
-		show_image("pull_forward")
-		first_time_neutral = True
-		first_time_package = False
+		show_image("neutral")
+		first_time_neutral = False
+		first_time_package = True
 		first_time_thankyou = False
 		first_time_wait = False
 ### Prod Phidget
