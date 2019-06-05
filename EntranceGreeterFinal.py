@@ -136,6 +136,7 @@ while True:
 			# 	first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
+	print temp_time - sleep_tracker_start_time
 	if (temp_time - sleep_tracker_start_time).seconds > 120:
 		sleep_tracker_start_time = datetime.datetime.now()
 		show_image("please_wait")
