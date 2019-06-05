@@ -123,7 +123,7 @@ while True:
 				# 		sleep(wash_delay/(wash_delay*accuracy_index))
 		elif index == 0 and channel.getState() == 0:
 			temp_time = datetime.datetime.now()
-			if (temp_time - sleep_tracker_start_time).seconds > 10:
+			if (temp_time - sleep_tracker_start_time).seconds > 90:
 				show_image("please_wait")
 			else:
 				show_image("pull_forward")
