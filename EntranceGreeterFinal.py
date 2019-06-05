@@ -122,7 +122,6 @@ while True:
 				# 		sleep(wash_delay/(wash_delay*accuracy_index))
 		elif index == 0 and channel.getState() == 0:
 			show_image("pull_forward")
-			sleep_tracker_start_time = datetime.datetime.now()
 			first_time_neutral = True
 			first_time_package = False
 			first_time_thankyou = False
@@ -137,7 +136,7 @@ while True:
 
 	temp_time = datetime.datetime.now()
 	print temp_time - sleep_tracker_start_time
-	if (temp_time - sleep_tracker_start_time).seconds > 120:
+	if (temp_time - sleep_tracker_start_time).seconds > 10:
 		sleep_tracker_start_time = datetime.datetime.now()
 		show_image("please_wait")
 		first_time_neutral = True
