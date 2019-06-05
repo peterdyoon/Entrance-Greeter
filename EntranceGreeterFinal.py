@@ -57,12 +57,12 @@ for index, channel in enumerate(channels):
 # Comment out for now during Pygame Testing
 
 # Start with Pull Forward
-show_image("neutral")
+show_image("pull_forward")
 
 # Flag for when to play Thank You message
 sleep_tracker_start_time = datetime.datetime.now()
-first_time_neutral = False
-first_time_package = True
+first_time_neutral = True
+first_time_package = False
 first_time_thankyou = False
 first_time_wait = False
 
@@ -75,7 +75,7 @@ while True:
 		# print index, channel, channel.getState()
 		if channel.getState() == 1:
 			screen.fill(white)
-			if first_time_neutral and index == 0 and channels[4].getState() != 1:
+			if first_time_neutral and index == 0:
 				print "Neutral Index: {}".format(index)
 				show_image("neutral")
 				play_sound("neutral")
@@ -103,20 +103,30 @@ while True:
 				sleep_tracker_start_time = datetime.datetime.now()
 				first_time_package = False
 				first_time_thankyou = True
-			elif first_time_thankyou == True:
+			elif first_time_thankyou == True and index == 4:
 				print "Thank You Index: {}".format(index)
-				wash_delay = 10.0
-				accuracy_index = 100
-				for interval in range(0, int(wash_delay) * accuracy_index):
-					if interval == wash_delay * accuracy_index - 1:
-						show_image("thank_you")
-						play_sound("thank_you")
-						sleep_tracker_start_time = datetime.datetime.now()
-						first_time_thankyou = False
-						# first_time_wait = True
-						# first_time_package == True
-					else:
-						sleep(wash_delay/(wash_delay*accuracy_index))
+				show_image("thank_you")
+				play_sound("thank_you")
+				sleep_tracker_start_time = datetime.datetime.now()
+				first_time_thankyou = False
+
+				# for interval in range(0, int(wash_delay) * accuracy_index):
+				# 	if interval == wash_delay * accuracy_index - 1:
+				# 		show_image("thank_you")
+				# 		play_sound("thank_you")
+				# 		sleep_tracker_start_time = datetime.datetime.now()
+				# 		first_time_thankyou = False
+				# 		# first_time_wait = True
+				# 		# first_time_package == True
+				# 	else:
+				# 		sleep(wash_delay/(wash_delay*accuracy_index))
+		elif index == 0 and channel.getState() == 0:
+			show_image("pull_forward")
+			sleep_tracker_start_time = datetime.datetime.now()
+			first_time_neutral = True
+			first_time_package = False
+			first_time_thankyou = False
+			first_time_wait = False
 			# elif first_time_wait and index == 4:
 			# 	print "Please Wait Index: {}".format(index)
 			# 	show_image("please_wait")
@@ -126,11 +136,11 @@ while True:
 			# 	first_time_neutral = True
 
 	temp_time = datetime.datetime.now()
-	if (temp_time - sleep_tracker_start_time).seconds > 10:
+	if (temp_time - sleep_tracker_start_time).seconds > 120:
 		sleep_tracker_start_time = datetime.datetime.now()
-		show_image("neutral")
-		first_time_neutral = False
-		first_time_package = True
+		show_image("please_wait")
+		first_time_neutral = True
+		first_time_package = False
 		first_time_thankyou = False
 		first_time_wait = False
 ### Prod Phidget
