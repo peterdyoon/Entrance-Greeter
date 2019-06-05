@@ -66,6 +66,7 @@ first_time_package = False
 first_time_thankyou = False
 first_time_wait = False
 
+
 ### Prod Phidget
 while True:
 	for event in pygame.event.get():
@@ -121,11 +122,15 @@ while True:
 				# 	else:
 				# 		sleep(wash_delay/(wash_delay*accuracy_index))
 		elif index == 0 and channel.getState() == 0:
-			show_image("pull_forward")
-			first_time_neutral = True
-			first_time_package = False
-			first_time_thankyou = False
-			first_time_wait = False
+			temp_time = datetime.datetime.now()
+			if (temp_time - sleep_tracker_start_time).seconds > 10:
+				show_image("please_wait")
+			else:
+				show_image("pull_forward")
+				first_time_neutral = True
+				first_time_package = False
+				first_time_thankyou = False
+				first_time_wait = False
 			# elif first_time_wait and index == 4:
 			# 	print "Please Wait Index: {}".format(index)
 			# 	show_image("please_wait")
@@ -134,15 +139,15 @@ while True:
 			# 	first_time_wait = False
 			# 	first_time_neutral = True
 
-	temp_time = datetime.datetime.now()
-	print temp_time - sleep_tracker_start_time
-	if (temp_time - sleep_tracker_start_time).seconds > 10:
-		sleep_tracker_start_time = datetime.datetime.now()
-		show_image("please_wait")
-		first_time_neutral = True
-		first_time_package = False
-		first_time_thankyou = False
-		first_time_wait = False
+	# temp_time = datetime.datetime.now()
+	# print temp_time - sleep_tracker_start_time
+	# if (temp_time - sleep_tracker_start_time).seconds > 10:
+	# 	sleep_tracker_start_time = datetime.datetime.now()
+	# 	show_image("please_wait")
+	# 	first_time_neutral = True
+	# 	first_time_package = False
+	# 	first_time_thankyou = False
+	# 	first_time_wait = False
 ### Prod Phidget
 
 
