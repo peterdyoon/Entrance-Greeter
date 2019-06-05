@@ -127,10 +127,10 @@ while True:
 				show_image("please_wait")
 			else:
 				show_image("pull_forward")
-				first_time_neutral = True
-				first_time_package = False
-				first_time_thankyou = False
-				first_time_wait = False
+			first_time_neutral = True
+			first_time_package = False
+			first_time_thankyou = False
+			first_time_wait = False
 			# elif first_time_wait and index == 4:
 			# 	print "Please Wait Index: {}".format(index)
 			# 	show_image("please_wait")
