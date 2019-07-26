@@ -123,8 +123,6 @@ while True:
 					play_sound("thank_you")
 					sleep_tracker_start_time = datetime.datetime.now()
 					first_time_thankyou = False
-				else:
-					sleep(wash_delay/(wash_delay*accuracy_index))
 		# elif first_time_thankyou:
 		# 	wash_delay = 4.0
 		# 	accuracy_index = 100
