@@ -3,6 +3,10 @@ from time import sleep
 from Phidget22.Devices.DigitalInput import *
 from DigitalInput import onAttachHandler, onDetachHandler, onErrorHandler, onStateChangeHandler
 
+phidget_id = int(sys.argv[1])
+orientation = sys.argv[2]
+custom_setting = sys.argv[3]
+
 pygame.init()
 pygame.mixer.init()
 
@@ -23,7 +27,7 @@ x =  (display_width * 1)
 y = (display_height * 1)
 
 def show_image(stage):
-	image = pygame.image.load('Images/{}.png'.format(stage))
+	image = pygame.image.load('Images/{}/{}.png'.format(orientation, stage))
 	image = pygame.transform.scale(image, (display_width, int(display_height)))
 	rect = image.get_rect()
 	rect = rect.move((x, y))
@@ -35,7 +39,7 @@ def play_sound(stage):
 	sound = pygame.mixer.Sound("Sounds/{}.wav".format(stage))
 	sound.play()
 
-if sys.argv[1] == "Neutral":
+if custom_setting == "Neutral":
 	while True:
 		for event in pygame.event.get():
 			show_image("neutral")
@@ -44,7 +48,7 @@ if sys.argv[1] == "Neutral":
 channels = [DigitalInput() for x in range(0, 8)]
 
 for index, channel in enumerate(channels):
-	channels[index].setDeviceSerialNumber(int(sys.argv[1]))
+	channels[index].setDeviceSerialNumber(phidget_id)
 	channels[index].setChannel(index)
 
 	# Might not use this; a little too much activity
@@ -57,7 +61,7 @@ for index, channel in enumerate(channels):
 # Comment out for now during Pygame Testing
 
 # Start with Pull Forward
-show_image("pull_forward")
+show_image("please_wait")
 
 # Flag for when to play Thank You message
 sleep_tracker_start_time = datetime.datetime.now()
@@ -105,22 +109,23 @@ while True:
 				first_time_package = False
 				first_time_thankyou = True
 			elif first_time_thankyou == True and index == 4:
-				print "Thank You Index: {}".format(index)
-				show_image("thank_you")
-				play_sound("thank_you")
-				sleep_tracker_start_time = datetime.datetime.now()
-				first_time_thankyou = False
+				# print "Thank You Index: {}".format(index)
+				# show_image("thank_you")
+				# play_sound("thank_you")
+				# sleep_tracker_start_time = datetime.datetime.now()
+				# first_time_thankyou = False
 
-				# for interval in range(0, int(wash_delay) * accuracy_index):
-				# 	if interval == wash_delay * accuracy_index - 1:
-				# 		show_image("thank_you")
-				# 		play_sound("thank_you")
-				# 		sleep_tracker_start_time = datetime.datetime.now()
-				# 		first_time_thankyou = False
-				# 		# first_time_wait = True
-				# 		# first_time_package == True
-				# 	else:
-				# 		sleep(wash_delay/(wash_delay*accuracy_index))
+				for interval in range(0, int(wash_delay) * accuracy_index):
+					if interval == wash_delay * accuracy_index - 1:
+						print "Thank You Index: {}".format(index)
+						show_image("thank_you")
+						play_sound("thank_you")
+						sleep_tracker_start_time = datetime.datetime.now()
+						first_time_thankyou = False
+						# first_time_wait = True
+						# first_time_package == True
+					else:
+						sleep(wash_delay/(wash_delay*accuracy_index))
 		elif index == 0 and channel.getState() == 0:
 			temp_time = datetime.datetime.now()
 			if (temp_time - sleep_tracker_start_time).seconds > 90:
