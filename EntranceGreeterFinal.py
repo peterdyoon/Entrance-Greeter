@@ -109,37 +109,38 @@ while True:
 				first_time_package = False
 				first_time_thankyou = True
 			# elif first_time_thankyou == True and index == 4:
+			elif first_time_thankyou == True:
 				# print "Thank You Index: {}".format(index)
 				# show_image("thank_you")
 				# play_sound("thank_you")
 				# sleep_tracker_start_time = datetime.datetime.now()
 				# first_time_thankyou = False
 
-				# wash_delay = 4.0
-				# accuracy_index = 100
-				# for interval in range(0, int(wash_delay) * accuracy_index):
-				# 	if interval == wash_delay * accuracy_index - 1:
-				# 		print "Thank You Index: {}".format(index)
+				wash_delay = 4.0
+				accuracy_index = 100
+				for interval in range(0, int(wash_delay) * accuracy_index):
+					if interval == wash_delay * accuracy_index - 1:
+						print "Thank You Index: {}".format(index)
 						
-				# 		show_image("thank_you")
-				# 		play_sound("thank_you")
-				# 		sleep_tracker_start_time = datetime.datetime.now()
-				# 		first_time_thankyou = False
-				# 	else:
-				# 		sleep(wash_delay/(wash_delay*accuracy_index))
-		elif first_time_thankyou:
-			wash_delay = 4.0
-			accuracy_index = 100
-			for interval in range(0, int(wash_delay) * accuracy_index):
-				print "Interval: {}".format(interval)
-				if interval > wash_delay * accuracy_index - 1:
-					print "Thank You Index: {}".format(index)
-					show_image("thank_you")
-					play_sound("thank_you")
-					sleep_tracker_start_time = datetime.datetime.now()
-					first_time_thankyou = False
-				else:
-					sleep(wash_delay/(wash_delay*accuracy_index))
+						show_image("thank_you")
+						play_sound("thank_you")
+						sleep_tracker_start_time = datetime.datetime.now()
+						first_time_thankyou = False
+					else:
+						sleep(wash_delay/(wash_delay*accuracy_index))
+		# elif first_time_thankyou:
+		# 	wash_delay = 4.0
+		# 	accuracy_index = 100
+		# 	for interval in range(0, int(wash_delay) * accuracy_index):
+		# 		print "Interval: {}".format(interval)
+		# 		if interval > wash_delay * accuracy_index - 1:
+		# 			print "Thank You Index: {}".format(index)
+		# 			show_image("thank_you")
+		# 			play_sound("thank_you")
+		# 			sleep_tracker_start_time = datetime.datetime.now()
+		# 			first_time_thankyou = False
+		# 		else:
+		# 			sleep(wash_delay/(wash_delay*accuracy_index))
 		elif index == 0 and channel.getState() == 0:
 			temp_time = datetime.datetime.now()
 			if (temp_time - sleep_tracker_start_time).seconds > 90:
