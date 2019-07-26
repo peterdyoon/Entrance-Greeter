@@ -108,7 +108,7 @@ while True:
 				sleep_tracker_start_time = datetime.datetime.now()
 				first_time_package = False
 				first_time_thankyou = True
-			elif first_time_thankyou == True and index == 4:
+			# elif first_time_thankyou == True and index == 4:
 				# print "Thank You Index: {}".format(index)
 				# show_image("thank_you")
 				# play_sound("thank_you")
