@@ -51,22 +51,6 @@ if custom_setting == "Neutral":
 		for event in pygame.event.get():
 			show_image("neutral")
 
-# Comment out for now during Pygame Testing
-channels = [DigitalInput() for x in range(0, 4)]
-
-for index, channel in enumerate(channels):
-	channels[index].setDeviceSerialNumber(phidget_id)
-	channels[index].setChannel(index)
-
-	# Might not use this; a little too much activity
-	# ch.setOnAttachHandler(onAttachHandler)
-	# ch.setOnDetachHandler(onDetachHandler)
-	# ch.setOnErrorHandler(onErrorHandler)
-	# ch.setOnStateChangeHandler(onStateChangeHandler)
-
-	channels[index].openWaitForAttachment(5000)
-# Comment out for now during Pygame Testing
-
 # Start with Pull Forward
 show_image("pull_forward")
 
