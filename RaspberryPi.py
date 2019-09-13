@@ -72,31 +72,31 @@ while True:
 	# if channel.getState() == 1:
 	screen.fill(white)
 	if first_time_neutral and GPIO.input(22) == 0:
-		print "Neutral Index: {}".format(index)
 		show_image("neutral")
 		play_sound("neutral")
 		sleep_tracker_start_time = datetime.datetime.now()
+		print "{} Neutral".format(sleep_tracker_start_time.strftime("%H:%M:%S"))
 		first_time_neutral = False
 		first_time_package = True
 	elif first_time_package and GPIO.input(23) == 0:
-		print "Love Index: {}".format(index)
 		show_image("wash_love")
 		play_sound("wash_love")
 		sleep_tracker_start_time = datetime.datetime.now()
+		print "{} Love".format(sleep_tracker_start_time.strftime("%H:%M:%S"))
 		first_time_package = False
 		first_time_thankyou = True
 	elif first_time_package and GPIO.input(24) == 0:
-		print "Like Index: {}".format(index)
 		show_image("wash_like")
 		play_sound("wash_like")
 		sleep_tracker_start_time = datetime.datetime.now()
+		print "{} Like".format(sleep_tracker_start_time.strftime("%H:%M:%S"))
 		first_time_package = False
 		first_time_thankyou = True
 	elif first_time_package and GPIO.input(25) == 0:
-		print "Wash Index: {}".format(index)
 		show_image("wash_basic")
 		play_sound("wash_basic")
 		sleep_tracker_start_time = datetime.datetime.now()
+		print "{} Wash".format(sleep_tracker_start_time.strftime("%H:%M:%S"))
 		first_time_package = False
 		first_time_thankyou = True
 	# elif first_time_thankyou == True and index == 4:
@@ -109,10 +109,10 @@ while True:
 
 		temp_time = datetime.datetime.now()
 		if (temp_time - sleep_tracker_start_time).seconds > 5:
-			print "Thank You Index: {}".format(index)
 			show_image("thank_you")
 			play_sound("thank_you")
 			sleep_tracker_start_time = datetime.datetime.now()
+			print "{} Thank You".format(sleep_tracker_start_time.strftime("%H:%M:%S"))
 			first_time_thankyou = False
 	# elif first_time_thankyou:
 	# 	wash_delay = 4.0
