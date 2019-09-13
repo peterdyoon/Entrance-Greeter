@@ -10,12 +10,6 @@ GPIO.setup(23, GPIO.IN)
 GPIO.setup(24, GPIO.IN)
 GPIO.setup(25, GPIO.IN)
 
-while True:
-    sleep(.25)
-    print("1: {} 2: {} 3: {} 4: {}".format(GPIO.input(22), GPIO.input(23), GPIO.input(24), GPIO.input(25)))
-    
-
-
 phidget_id = int(sys.argv[1])
 orientation = sys.argv[2]
 custom_setting = sys.argv[3]
